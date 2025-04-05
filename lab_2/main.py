@@ -18,10 +18,9 @@ y_end_point = 490
 crop = image[y_start_point:y_end_point, x_start_point:x_end_point]
 
 # Image thresholding
-_, thresh_bin = cv.threshold(crop, 127, 255, cv.THRESH_BINARY)
+_, thresh_bin = cv.threshold(crop, 200, 255, cv.THRESH_BINARY)
 _,thresh_otsu = cv.threshold(crop,0,255,cv.THRESH_BINARY+cv.THRESH_OTSU)
 thresh_adaptive = cv.adaptiveThreshold(crop,255,cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY,5,2)
-
 cv.imwrite("binary_threshold.jpg", thresh_bin)
 cv.imwrite("otsu_threshold.jpg", thresh_otsu)
 cv.imwrite("adaptive_threshold.jpg", thresh_adaptive)
